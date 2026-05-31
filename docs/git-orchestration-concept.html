@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git Orchestration Concept</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fa;
+      --ink: #18212f;
+      --muted: #5c6675;
+      --line: #7d8794;
+      --human: #fff7e8;
+      --kernel: #e8f2ff;
+      --agent: #eef8ef;
+      --storage: #f1ecff;
+      --verify: #fff0f0;
+      --git: #ecf7f8;
+      --stroke: #2f3a4a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1180px, 100%);
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.45;
+      max-width: 820px;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #ffffff;
+      border: 1px solid #d9dee7;
+      border-radius: 8px;
+    }
+
+    .box {
+      stroke: var(--stroke);
+      stroke-width: 1.5;
+      rx: 8;
+      ry: 8;
+    }
+
+    .group {
+      fill: #ffffff;
+      stroke: #c9d0db;
+      stroke-width: 1.5;
+      rx: 10;
+      ry: 10;
+    }
+
+    .label {
+      fill: var(--ink);
+      font-size: 16px;
+      font-weight: 700;
+      text-anchor: middle;
+    }
+
+    .small {
+      fill: var(--muted);
+      font-size: 13px;
+      text-anchor: middle;
+    }
+
+    .group-title {
+      fill: #364254;
+      font-size: 14px;
+      font-weight: 700;
+      text-anchor: middle;
+      text-transform: uppercase;
+    }
+
+    .arrow {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 2;
+      marker-end: url(#arrowhead);
+    }
+
+    .audit {
+      stroke-dasharray: 6 5;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Git Orchestration Concept</h1>
+    <p>Models do creative work. The kernel owns task truth. Git records the trail so progress can be reviewed, verified, and recovered after context loss.</p>
+
+    <svg viewBox="0 0 1120 760" role="img" aria-labelledby="title desc">
+      <title id="title">Git orchestration conceptual architecture</title>
+      <desc id="desc">A flow from human intent through a deterministic orchestration kernel, scoped agent work, verification, and Git-backed audit and recovery.</desc>
+
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M 0 0 L 10 4 L 0 8 z" fill="#7d8794"></path>
+        </marker>
+      </defs>
+
+      <rect x="40" y="90" width="1040" height="220" class="group"></rect>
+      <text x="560" y="122" class="group-title">Work Control Plane</text>
+
+      <rect x="80" y="165" width="160" height="86" class="box" fill="var(--human)"></rect>
+      <text x="160" y="197" class="label">Human Intent</text>
+      <text x="160" y="222" class="small">goal, priority, limits</text>
+
+      <rect x="310" y="150" width="210" height="116" class="box" fill="var(--kernel)"></rect>
+      <text x="415" y="184" class="label">Orchestration Kernel</text>
+      <text x="415" y="211" class="small">creates tasks</text>
+      <text x="415" y="232" class="small">guards state transitions</text>
+
+      <rect x="600" y="150" width="190" height="116" class="box" fill="var(--storage)"></rect>
+      <text x="695" y="184" class="label">File State</text>
+      <text x="695" y="211" class="small">tasks, events, packets</text>
+      <text x="695" y="232" class="small">plain auditable records</text>
+
+      <rect x="870" y="165" width="160" height="86" class="box" fill="var(--git)"></rect>
+      <text x="950" y="197" class="label">Git History</text>
+      <text x="950" y="222" class="small">diffs, commits, recovery</text>
+
+      <path d="M 240 208 L 310 208" class="arrow"></path>
+      <path d="M 520 208 L 600 208" class="arrow"></path>
+      <path d="M 790 208 L 870 208" class="arrow"></path>
+
+      <rect x="40" y="370" width="1040" height="250" class="group"></rect>
+      <text x="560" y="402" class="group-title">Agent Execution Plane</text>
+
+      <rect x="120" y="455" width="180" height="96" class="box" fill="var(--storage)"></rect>
+      <text x="210" y="488" class="label">Context Packet</text>
+      <text x="210" y="515" class="small">scoped instructions</text>
+      <text x="210" y="536" class="small">fresh state snapshot</text>
+
+      <rect x="390" y="455" width="180" height="96" class="box" fill="var(--agent)"></rect>
+      <text x="480" y="488" class="label">Agent Work</text>
+      <text x="480" y="515" class="small">produce artifact</text>
+      <text x="480" y="536" class="small">report status</text>
+
+      <rect x="660" y="455" width="180" height="96" class="box" fill="var(--verify)"></rect>
+      <text x="750" y="488" class="label">Verification</text>
+      <text x="750" y="515" class="small">tests, review, approval</text>
+      <text x="750" y="536" class="small">completion gate</text>
+
+      <rect x="910" y="455" width="130" height="96" class="box" fill="var(--git)"></rect>
+      <text x="975" y="488" class="label">Merge</text>
+      <text x="975" y="515" class="small">accepted work</text>
+      <text x="975" y="536" class="small">recorded trail</text>
+
+      <path d="M 695 266 C 695 330 210 340 210 455" class="arrow"></path>
+      <path d="M 300 503 L 390 503" class="arrow"></path>
+      <path d="M 570 503 L 660 503" class="arrow"></path>
+      <path d="M 840 503 L 910 503" class="arrow"></path>
+      <path d="M 750 455 C 750 330 415 330 415 266" class="arrow audit"></path>
+      <path d="M 975 455 C 975 330 950 330 950 251" class="arrow audit"></path>
+
+      <rect x="130" y="660" width="860" height="58" class="box" fill="#ffffff"></rect>
+      <text x="560" y="684" class="label">Design Rule</text>
+      <text x="560" y="708" class="small">If correctness, recovery, or auditability matters, it belongs in deterministic state, not only in chat.</text>
+    </svg>
+  </main>
+</body>
+</html>
