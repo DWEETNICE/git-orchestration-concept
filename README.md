@@ -17,9 +17,25 @@ Git is not the brain of the system. It is the audit layer.
 
 ## Diagram
 
-Open the conceptual diagram here:
+```mermaid
+flowchart LR
+    intent[Human Intent<br/>goal, priority, limits]
+    kernel[Orchestration Kernel<br/>creates tasks<br/>guards transitions]
+    state[File State<br/>tasks, events, packets]
+    git[Git History<br/>diffs, commits, recovery]
 
-- [`docs/git-orchestration-concept.html`](docs/git-orchestration-concept.html)
+    packet[Context Packet<br/>scoped instructions<br/>fresh state snapshot]
+    agent[Agent Work<br/>produce artifact<br/>report status]
+    verify[Verification<br/>tests, review, approval]
+    merge[Merge<br/>accepted work<br/>recorded trail]
+
+    intent --> kernel --> state --> git
+    state --> packet --> agent --> verify --> merge
+    verify -. feedback .-> kernel
+    merge -. audit trail .-> git
+```
+
+Design rule: if correctness, recovery, or auditability matters, it belongs in deterministic state, not only in chat.
 
 ## Conceptual Components
 
