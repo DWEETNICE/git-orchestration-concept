@@ -18,21 +18,25 @@ Git is not the brain of the system. It is the audit layer.
 ## Diagram
 
 ```mermaid
-flowchart LR
-    intent[Human Intent<br/>goal, priority, limits]
-    kernel[Orchestration Kernel<br/>creates tasks<br/>guards transitions]
-    state[File State<br/>tasks, events, packets]
-    git[Git History<br/>diffs, commits, recovery]
+flowchart TD
+    intent[Human Intent<br/>goal and constraints]
+    kernel[Orchestration Kernel<br/>creates and tracks tasks]
+    state[Deterministic State<br/>files, events, packets]
+    packet[Context Packet<br/>scoped snapshot for work]
+    agent[Agent Execution<br/>artifact plus status]
+    verify[Verification Gate<br/>tests, review, approval]
+    close[Task Closure<br/>accepted output]
+    git[Git Audit Trail<br/>diffs, commits, recovery]
 
-    packet[Context Packet<br/>scoped instructions<br/>fresh state snapshot]
-    agent[Agent Work<br/>produce artifact<br/>report status]
-    verify[Verification<br/>tests, review, approval]
-    merge[Merge<br/>accepted work<br/>recorded trail]
-
-    intent --> kernel --> state --> git
-    state --> packet --> agent --> verify --> merge
+    intent --> kernel
+    kernel --> state
+    state --> packet
+    packet --> agent
+    agent --> verify
+    verify --> close
+    state --> git
+    close --> git
     verify -. feedback .-> kernel
-    merge -. audit trail .-> git
 ```
 
 Design rule: if correctness, recovery, or auditability matters, it belongs in deterministic state, not only in chat.
