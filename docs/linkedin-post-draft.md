@@ -23,7 +23,7 @@ The goal is not to make a comprehensive framework yet. It is to sketch a determi
 
 I put together a small conceptual repo and diagram here:
 
-TODO: add repo link
+https://github.com/DWEETNICE/git-orchestration-concept
 
 The design rule I keep coming back to:
 
