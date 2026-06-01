@@ -39,6 +39,41 @@ flowchart TD
     verify -. feedback .-> kernel
 ```
 
+Basic ASCII version:
+
+```text
++---------+
+| TASK.md |
++---------+
+     |
+     v
++----------------+
+| instruction.md |
++----------------+
+     |
+     v
++-----------+
+| status.md |
++-----------+
+     |
+     v
++----------------+
+| Accept result? |
++----------------+
+   |         |
+  no        yes
+   |         |
+   v         v
+revise   +---------------+
+   |     | Task Complete |
+   +-----+---------------+
+     |
+     v
++----------------+
+| instruction.md |
++----------------+
+```
+
 Design rule: if correctness, recovery, or auditability matters, it belongs in deterministic state, not only in chat.
 
 ## Conceptual Components
