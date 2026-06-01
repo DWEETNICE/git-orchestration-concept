@@ -17,30 +17,6 @@ Git is not the brain of the system. It is the audit layer.
 
 ## Diagram
 
-```mermaid
-flowchart TD
-    intent[Human Intent<br/>goal and constraints]
-    kernel[Orchestration Kernel<br/>creates and tracks tasks]
-    state[Deterministic State<br/>files, events, packets]
-    packet[Context Packet<br/>scoped snapshot for work]
-    agent[Agent Execution<br/>artifact plus status]
-    verify[Verification Gate<br/>tests, review, approval]
-    close[Task Closure<br/>accepted output]
-    git[Git Audit Trail<br/>diffs, commits, recovery]
-
-    intent --> kernel
-    kernel --> state
-    state --> packet
-    packet --> agent
-    agent --> verify
-    verify --> close
-    state --> git
-    close --> git
-    verify -. feedback .-> kernel
-```
-
-Basic ASCII version:
-
 ```text
 +---------+
 | TASK.md |
