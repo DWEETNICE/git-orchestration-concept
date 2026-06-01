@@ -17,7 +17,7 @@ Git is not the brain of the system. It is the audit layer.
 
 ## Diagram
 
-![Git-Driven Agent Execution Loop](docs/git-driven-agent-execution-loop.png)
+![Git-Driven Agent Execution Loop](docs/git-driven-agent-execution-loop.jpg)
 
 ```text
 +---------+
