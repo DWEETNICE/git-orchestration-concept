@@ -17,15 +17,17 @@ Git is not the brain of the system. It is the audit layer.
 
 ## Diagram
 
+![Git-Driven Agent Execution Loop](docs/git-driven-agent-execution-loop.png)
+
 ```text
 +---------+
 | TASK.md |
 +---------+
      |
      v
-+----------------+
-| instruction.md |
-+----------------+
++-----------------+
+| instructions.md |
++-----------------+
      |
      v
 +-----------+
@@ -45,12 +47,30 @@ revise   +---------------+
    +-----+---------------+
      |
      v
-+----------------+
-| instruction.md |
-+----------------+
++-----------------+
+| instructions.md |
++-----------------+
 ```
 
 Design rule: if correctness, recovery, or auditability matters, it belongs in deterministic state, not only in chat.
+
+## Sample Files
+
+The repo includes a concrete sample task folder at [`examples/sample-task`](examples/sample-task) so the loop is not just abstract.
+
+Files:
+
+- [`examples/sample-task/TASK.md`](examples/sample-task/TASK.md): the objective and success criteria
+- [`examples/sample-task/instructions.md`](examples/sample-task/instructions.md): the current actionable plan for the worker
+- [`examples/sample-task/status.md`](examples/sample-task/status.md): progress, outcomes, blockers, and next review input
+
+### Example Flow
+
+1. The manager writes `TASK.md` with the objective and acceptance criteria.
+2. The manager writes `instructions.md` with the current execution plan.
+3. A worker agent executes against that instruction set.
+4. The worker updates `status.md` with results and evidence.
+5. Review either accepts the result or revises `instructions.md` for another loop.
 
 ## Conceptual Components
 
